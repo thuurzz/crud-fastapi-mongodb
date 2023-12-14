@@ -8,7 +8,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 @router.get("/")
-async def root():
+async def status_server():
     return {"status": "Ok"}
 
 @router.get("/people", response_model=List[Person])
