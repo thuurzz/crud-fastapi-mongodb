@@ -1,9 +1,5 @@
 #!/bin/bash
 
-# Diretório raiz do projeto
-mkdir projeto-crud-pessoas
-cd projeto-crud-pessoas
-
 # Criando os subdiretórios
 mkdir -p app/api
 mkdir -p app/core
