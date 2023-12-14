@@ -15,7 +15,7 @@ class PyObjectId(ObjectId):
         return ObjectId(v)
 
     @classmethod
-    def __modify_schema__(cls, field_schema):
+    def __get_pydantic_json_schema__(cls, field_schema):
         field_schema.update(type="string")
 
 class PersonBase(BaseModel):
@@ -36,7 +36,7 @@ class Person(PersonBase):
     class Config:
         arbitrary_types_allowed = True
         json_encoders = {ObjectId: str}
-        schema_extra = {
+        json_schema_extra = {
             "example": {
                 "name": "John Doe",
                 "email": "johndoe@example.com",

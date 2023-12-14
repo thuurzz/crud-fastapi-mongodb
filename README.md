@@ -39,6 +39,11 @@ Para executar este projeto localmente, siga estas etapas:
    uvicorn main:app --reload
    ```
 
+5. Execute a aplicação em modo produção:
+   ```bash
+   uvicorn main:app --host 0.0.0.0 --port 8080 --workers 4
+   ```
+
 A API estará disponível em `http://localhost:8000`.
 
 ## Documentação da API
