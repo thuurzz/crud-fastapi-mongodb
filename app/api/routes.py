@@ -7,6 +7,10 @@ from ..services.person_service import get_all_people, add_person, find_person, u
 router = APIRouter()
 logger = logging.getLogger(__name__)
 
+@router.get("/")
+async def root():
+    return {"status": "Ok"}
+
 @router.get("/people", response_model=List[Person])
 async def read_people():
     try:
