@@ -12,13 +12,11 @@ app = FastAPI(
 @app.on_event("startup")
 async def startup_event():
     # Código para inicialização, como estabelecer conexões de banco de dados
-    print("Aplicação iniciada com sucesso.")
     pass
 
 @app.on_event("shutdown")
 async def shutdown_event():
     # Código para finalização, como fechar conexões de banco de dados
-    print("Aplicação encerrada com sucesso.")
     client.close()
 
 app.include_router(api_router)
