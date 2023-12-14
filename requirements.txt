@@ -2,3 +2,5 @@ pydantic
 pymongo
 fastapi
 pytest
+uvicorn
+pydantic[dotenv]

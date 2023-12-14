@@ -1,5 +1,5 @@
 from fastapi import FastAPI
-from app.api import router as api_router
+from app.api.routes import router as api_router
 from app.core.config import settings
 from app.db.database import client
 
