@@ -5,7 +5,7 @@ from ..core.config import settings
 client = MongoClient(settings.DATABASE_URL)
 
 # Selecionando o banco de dados
-db = client['cadastro-pessoas']
+db = client['DB_CUSTOMERS']
 
 # Função para obter uma coleção específica
 def get_collection(collection_name: str):
