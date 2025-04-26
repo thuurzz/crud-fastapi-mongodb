@@ -9,14 +9,13 @@ class Settings(BaseSettings):
     APP_NAME: str
     APP_VERSION: str
     HOST: str
-    PORT: str
-    DEBUG: str
+    PORT: int
+    DEBUG: bool
 
-
-class Config:
-    # Este atributo indica se as variáveis de ambiente devem ser lidas
-    # caso as mesmas não sejam passadas explicitamente na criação da instância de Settings.
-    env_file = ".env"
+    class Config:
+        # Este atributo indica se as variáveis de ambiente devem ser lidas
+        # caso as mesmas não sejam passadas explicitamente na criação da instância de Settings.
+        env_file = ".env"
 
 
 settings = Settings()
