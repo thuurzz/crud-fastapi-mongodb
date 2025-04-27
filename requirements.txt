@@ -7,3 +7,4 @@ pydantic[dotenv]
 httpx
 httpx[cli]
 pydantic-settings
+fastmcp
