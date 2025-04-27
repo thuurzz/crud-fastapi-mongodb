@@ -8,12 +8,12 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 
-@router.get("/")
+@router.get("/", operation_id="status_server")
 async def status_server():
     return {"status": "Ok"}
 
 
-@router.get("/customers", response_model=List[Person])
+@router.get("/customers", response_model=List[Person], operation_id="get_all_customers")
 async def get_all():
     try:
         people = get_all_people()
@@ -24,7 +24,7 @@ async def get_all():
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.get("/customers/{person_id}", response_model=Person)
+@router.get("/customers/{person_id}", response_model=Person, operation_id="get_customer")
 async def get(person_id: str):
     try:
         person = find_person(person_id)
@@ -38,7 +38,7 @@ async def get(person_id: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.post("/customers", response_model=Person, status_code=status.HTTP_201_CREATED)
+@router.post("/customers", response_model=Person, status_code=status.HTTP_201_CREATED, operation_id="create_customer")
 async def create(person: PersonCreate):
     try:
         new_person = add_person(person)
@@ -49,7 +49,7 @@ async def create(person: PersonCreate):
         raise HTTPException(status_code=400, detail=str(e))
 
 
-@router.put("/customers/{person_id}", response_model=Person)
+@router.put("/customers/{person_id}", response_model=Person, operation_id="update_customer")
 async def update(person_id: str, person: PersonCreate):
     try:
         updated_person = update_person(person_id, person)
@@ -63,7 +63,7 @@ async def update(person_id: str, person: PersonCreate):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete("/customers/{person_id}", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/customers/{person_id}", status_code=status.HTTP_204_NO_CONTENT, operation_id="delete_customer")
 async def delete(person_id: str):
     try:
         deleted = delete_person(person_id)
@@ -77,7 +77,7 @@ async def delete(person_id: str):
         raise HTTPException(status_code=500, detail=str(e))
 
 
-@router.delete("/customers", status_code=status.HTTP_204_NO_CONTENT)
+@router.delete("/customers", status_code=status.HTTP_204_NO_CONTENT, operation_id="delete_all_customers")
 async def delete_all():
     try:
         deleted_count = delete_all_people()
